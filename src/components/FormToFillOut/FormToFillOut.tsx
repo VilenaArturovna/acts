@@ -9,6 +9,7 @@ type FormType = {
   flat: string
   phoneNumber: string
   date: string
+  time: string
   employee: string
   consumer: string
 
@@ -77,8 +78,9 @@ export const FormToFillOut = () => {
     address: '',
     flat: '',
     phoneNumber: '+7',
-    date: (new Date().toLocaleDateString("ru", {year: 'numeric', month: 'long', day: 'numeric',})),
-    employee: 'Сазанов А.С.',
+    date: new Date().toLocaleDateString("ru", {year: 'numeric', month: 'long', day: 'numeric',}),
+    time: new Date().toLocaleTimeString("ru", {hour: 'numeric', minute: 'numeric'}),
+    employee: 'Сазанов Алексей Сергеевич',
     consumer: '',
 
     installationLocationPrev: '',
@@ -103,7 +105,7 @@ export const FormToFillOut = () => {
     nextVerification: '',
 
     seal: '',
-    sealInstallationPlace: 'клемманя крышка',
+    sealInstallationPlace: 'клеммная крышка',
     reasonsForRefusal: '',
   }
   const formik = useFormik({
@@ -125,6 +127,7 @@ export const FormToFillOut = () => {
               <TextField variant="filled" label="Квартира" size="small" {...formik.getFieldProps('flat')} />
               <TextField variant="filled" label="Телефон" size="small" {...formik.getFieldProps('phoneNumber')} />
               <TextField variant="filled" label="Дата" size="small" {...formik.getFieldProps('date')} />
+              <TextField variant="filled" label="Время" size="small" {...formik.getFieldProps('time')} />
               <TextField variant="filled" label="Установщик" size="small" {...formik.getFieldProps('employee')} />
               <TextField variant="filled" label="Потребитель" size="small" {...formik.getFieldProps('consumer')} />
             </CustomCardContent>
@@ -142,9 +145,9 @@ export const FormToFillOut = () => {
           </Card>
           <Card>
             <CustomCardContent>
-              <TextField variant="filled" label="Лицевой счет" size="small" {...formik.getFieldProps('seal')} />
-              <TextField variant="filled" label="Адрес" size="small" {...formik.getFieldProps('sealInstallationPlace')} />
-              <TextField variant="filled" label="Квартира" size="small" {...formik.getFieldProps('reasonsForRefusal')} />
+              <TextField variant="filled" label="Номер пломбы" size="small" {...formik.getFieldProps('seal')} />
+              <TextField variant="filled" label="Место установки пломбы" size="small" {...formik.getFieldProps('sealInstallationPlace')} />
+              <TextField variant="filled" label="Причины отказа в вводе" size="small" {...formik.getFieldProps('reasonsForRefusal')} />
             </CustomCardContent>
           </Card>
           <Card>

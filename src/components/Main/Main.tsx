@@ -6,7 +6,7 @@ import { useState } from 'react';
 type Page = 'addresses' | 'form' | 'act'
 
 export const Main = () => {
-  const [currentPage, setCurrentPage] = useState<Page>('form')
+  const [currentPage, setCurrentPage] = useState<Page>('act')
   return (
     <div>
       {currentPage === 'addresses' && <Addresses />}
